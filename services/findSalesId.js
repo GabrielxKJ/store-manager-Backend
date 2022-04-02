@@ -1,4 +1,4 @@
-const findSalesById = require('../models/searchSalesId');
+const findSalesById = require('../models/searchSalesById');
 
 module.exports = async (id) => {
     const foundSalesId = await findSalesById(id);
