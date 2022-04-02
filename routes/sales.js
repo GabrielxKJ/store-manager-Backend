@@ -12,7 +12,7 @@ const {
  
 router.get('/', getAllSales);
 router.get('/:id', notFoundSalesId, getSalesId);
-router.post('/', validateSales);
-router.put('/:id', validateSales);
+router.post('/', validateSales.validateSales);
+router.put('/:id', validateSales.validateSales);
 
 module.exports = router;

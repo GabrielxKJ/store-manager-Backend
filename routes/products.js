@@ -12,7 +12,7 @@ const {
 
 router.get('/', getAllProducts);
 router.get('/:id', notFoundProductId, getProductId);
-router.post('/', validateProducts);
-router.put('/:id', validateProducts);
+router.post('/', validateProducts.validateProducts, validateProducts.productAlreadyExist);
+router.put('/:id', validateProducts.validateProducts);
 
 module.exports = router;
