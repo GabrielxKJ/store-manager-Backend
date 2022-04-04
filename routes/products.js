@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const {
-   getAllProducts, getProductId, postProduct,
+   getAllProducts, getProductId, postProduct, putProduct,
   } = require('../controllers/index');
 
 const { 
@@ -13,6 +13,6 @@ const {
 router.get('/', getAllProducts);
 router.get('/:id', notFoundProductId, getProductId);
 router.post('/', validateProducts, productAlreadyExist, postProduct);
-router.put('/:id', validateProducts);
+router.put('/:id', validateProducts, notFoundProductId, putProduct);
 
 module.exports = router;

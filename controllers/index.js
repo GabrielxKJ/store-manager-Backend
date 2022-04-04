@@ -3,6 +3,7 @@ const getAllSales = require('./getAllSales');
 const getProductId = require('./getProductsId');
 const getSalesId = require('./getSalesId');
 const postProduct = require('./postProduct');
+const putProduct = require('./putProduct');
 
 module.exports = {
     getAllProducts,
@@ -10,4 +11,5 @@ module.exports = {
     getProductId,
     getSalesId,
     postProduct,
+    putProduct,
 };
