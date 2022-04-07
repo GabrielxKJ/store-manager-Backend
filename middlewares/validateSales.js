@@ -1,5 +1,6 @@
 module.exports = (req, res, next) => {
   const [{ productId, quantity }] = req.body;
+  console.log('cheguei');
   if (productId === undefined) {
     return res.status(400).json({ message: '"productId" is required' });
   }
