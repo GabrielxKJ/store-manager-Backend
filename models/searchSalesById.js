@@ -8,9 +8,9 @@ module.exports = async (id) => {
           product.product_id AS productId,
           product.quantity
       FROM
-          sales
-              INNER JOIN
-          sales_products AS product ON sales.id = product.sale_id
+        StoreManager.sales
+      INNER JOIN
+          StoreManager.sales_products AS product ON StoreManager.sales.id = product.sale_id
       WHERE
           sales.id = ?;
       `, [id]);
