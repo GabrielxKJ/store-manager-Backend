@@ -9,10 +9,10 @@ describe('Product Service', () => {
   const req = {};
 
   describe('testa a função createSale', () => {
-    before(() => {
+    beforeEach(() => {
         sinon.stub(productsModels,'updateSale').returns(1);
     });
-    after(async () => {
+    afterEach(async () => {
       productsModels.updateSale.restore();
     });
 

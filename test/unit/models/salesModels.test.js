@@ -14,12 +14,12 @@ describe('ProductModel', () => {
       quantity: 2
     }, ];
 
-    before(async () => {
+    beforeEach(async () => {
       const execute = [getAllSales];
       sinon.stub(connection, 'execute').resolves(execute);
     })
 
-    after(async () => {
+    afterEach(async () => {
       connection.execute.restore();
     });
 
@@ -37,12 +37,12 @@ describe('ProductModel', () => {
     }];
 
 
-    before(async () => {
+    beforeEach(async () => {
       const execute = [saleById];
       sinon.stub(connection, 'execute').resolves(execute);
     });
 
-    after(async () => {
+    afterEach(async () => {
       connection.execute.restore();
     });
 
@@ -53,17 +53,11 @@ describe('ProductModel', () => {
   });
 
   describe('testa a função "insertProduct" no model', () => {
+    beforeEach(async () => {
+      sinon.stub(connection, 'execute').resolves(1);
+    });
 
-    const create = [{
-      saleId: 1,
-      productId: 'test',
-      quantity: 10
-    }, ];
-
-    before(async () => {
-      sinon.stub(conn, 'execute').resolves(1);
-
-      after(async () => {
+      afterEach(async () => {
         connection.execute.restore();
       });
 
@@ -77,10 +71,9 @@ describe('ProductModel', () => {
           productId: 1,
           quantity: 1
         };
-        await productsModel.salesProducts(id, productId, quantity);
 
+        await productsModel.salesProducts(id, productId, quantity);
         expect(connection.execute.calledOnce).to.be.true;
       });
     });
-  })
-})
+  });

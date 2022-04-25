@@ -13,13 +13,13 @@ describe('Sales Controller', () => {
   const req = {};
 
   describe('testa o status da requisição http da função getAllSales', () => {
-    before(() => {
+    beforeEach(() => {
       req.body = {};
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
       sinon.stub(salesService, 'AllSales').resolves(false);
     });
-    after(async () => {
+    afterEach(async () => {
       salesService.AllSales.restore();
     });
 
@@ -30,7 +30,7 @@ describe('Sales Controller', () => {
   });
 
   describe('encontra a Sale pelo id', () => {
-    before(() => {
+    beforeEach(() => {
       req.params = {
         id: 1
       };
@@ -41,7 +41,7 @@ describe('Sales Controller', () => {
       ]);
     });
 
-    after(() => {
+    afterEach(() => {
       salesService.findSalesId.restore();
     });
 

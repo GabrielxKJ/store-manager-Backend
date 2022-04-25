@@ -11,13 +11,13 @@ describe('Product Controller', () => {
   const req = {};
 
   describe('testa o status da requisição http da função getAllProducts', () => {
-    before(() => {
+    beforeEach(() => {
       req.body = {};
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
       sinon.stub(productsServices, 'AllProducts').resolves(false);
     });
-    after(async () => {
+    afterEach(async () => {
       productsServices.AllProducts.restore();
     });
 
@@ -28,7 +28,7 @@ describe('Product Controller', () => {
   });
 
   describe('testa a função "create" no controller', () => {
-    before(() => {
+    beforeEach(() => {
       req.body = {
         name: 'new Product',
         quantity: '22',
@@ -41,7 +41,7 @@ describe('Product Controller', () => {
       });
     });
 
-    after(async () => {
+    afterEach(async () => {
       productsServices.createProduct.restore();
     });
 
@@ -52,7 +52,7 @@ describe('Product Controller', () => {
   });
 
   describe('teste da função delete', () => {
-    before(() => {
+    beforeEach(() => {
       req.params = {
           id: 1,
       }  
@@ -60,13 +60,32 @@ describe('Product Controller', () => {
       res.json = sinon.stub().returns();
       sinon.stub(productsServices, 'excludeProduct').resolves(false);
     });
-    after(async () => {
+    afterEach(async () => {
       productsServices.excludeProduct.restore();
     });
 
     it('testa se é retornado status 204 "No Content"', async () => {
      const rt = await productsController.deleteProduct(req, res);
      console.log(rt);
+      expect(res.status.calledWith(204)).to.be.equal(true);
+    });
+  });
+  
+  describe('teste da função delete', () => {
+    beforeEach(() => {
+      req.params = {
+          id: 1,
+      }  
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(productsServices, 'excludeProduct').resolves(false);
+    });
+    afterEach(async () => {
+      productsServices.excludeProduct.restore();
+    });
+
+    it('testa se é retornado status 204 "No Content"', async () => {
+      await productsController.deleteProduct(req, res);
       expect(res.status.calledWith(204)).to.be.equal(true);
     });
   });
