@@ -1,6 +1,6 @@
-const destroyProduct = require('../models/destroyProduct');
+const models = require('../models/destroyProduct');
 
-module.exports = async (id) => {
- const destroyedProduct = await destroyProduct(id);
+module.exports.excludeProduct = async (id) => {
+ const destroyedProduct = await models.destroyProducts(id);
  return destroyedProduct;
 };

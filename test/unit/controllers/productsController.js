@@ -15,10 +15,10 @@ describe('Product Controller', () => {
       req.body = {};
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
-      sinon.stub(productsServices, 'AllProducts').resolves(false);
+      sinon.stub(productsServices.AllProducts, 'AllProducts').resolves(false);
     });
     afterEach(async () => {
-      productsServices.AllProducts.restore();
+      productsServices.AllProducts.AllProducts.restore();
     });
 
     it('requisição deve ser bem sucedida status 200', async () => {
@@ -35,14 +35,14 @@ describe('Product Controller', () => {
       }
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns({});
-      sinon.stub(productsServices, 'createProduct').resolves({
+      sinon.stub(productsServices.createProduct, 'createProduct').resolves({
         "name": "thor",
         "quantity": 10
       });
     });
 
     afterEach(async () => {
-      productsServices.createProduct.restore();
+      productsServices.createProduct.createProduct.restore();
     });
 
     it('se o produto foi criado', async () => {
@@ -51,17 +51,17 @@ describe('Product Controller', () => {
     });
   });
 
-  describe('teste da função delete', () => {
+  describe('teste da função delete', () => {  
     beforeEach(() => {
       req.params = {
           id: 1,
       }  
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
-      sinon.stub(productsServices, 'excludeProduct').resolves(false);
+      sinon.stub(productsServices.excludeProduct, 'excludeProduct').resolves(false);
     });
     afterEach(async () => {
-      productsServices.excludeProduct.restore();
+      productsServices.excludeProduct.excludeProduct.restore();
     });
 
     it('testa se é retornado status 204 "No Content"', async () => {
@@ -70,23 +70,22 @@ describe('Product Controller', () => {
       expect(res.status.calledWith(204)).to.be.equal(true);
     });
   });
-  
-  describe('teste da função delete', () => {
-    beforeEach(() => {
-      req.params = {
-          id: 1,
-      }  
-      res.status = sinon.stub().returns(res);
-      res.json = sinon.stub().returns();
-      sinon.stub(productsServices, 'excludeProduct').resolves(false);
-    });
-    afterEach(async () => {
-      productsServices.excludeProduct.restore();
-    });
+  // describe('teste da função delete', () => {
+  //   beforeEach(() => {
+  //     req.params = {
+  //         id: 1,
+  //     }  
+  //     res.status = sinon.stub().returns(res);
+  //     res.json = sinon.stub().returns();
+  //     sinon.stub(productsServices, 'excludeProduct').resolves(false);
+  //   });
+  //   afterEach(async () => {
+  //     productsServices.excludeProduct.restore();
+  //   });
 
-    it('testa se é retornado status 204 "No Content"', async () => {
-      await productsController.deleteProduct(req, res);
-      expect(res.status.calledWith(204)).to.be.equal(true);
-    });
-  });
+  //   it('testa se é retornado status 204 "No Content"', async () => {
+  //     await productsController.deleteProduct(req, res);
+  //     expect(res.status.calledWith(204)).to.be.equal(true);
+  //   });
+  // });
 });

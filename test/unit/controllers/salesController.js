@@ -1,7 +1,5 @@
 const sinon = require('sinon');
-const {
-  expect
-} = require('chai');
+const { expect } = require('chai');
 
 const salesController = require('../../../controllers/index');
 const salesService = require('../../../services/index');
@@ -14,13 +12,14 @@ describe('Sales Controller', () => {
 
   describe('testa o status da requisição http da função getAllSales', () => {
     beforeEach(() => {
+
       req.body = {};
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
-      sinon.stub(salesService, 'AllSales').resolves(false);
+      sinon.stub(salesService.AllSales, 'AllSales').resolves(false);
     });
     afterEach(async () => {
-      salesService.AllSales.restore();
+      salesService.AllSales.AllSales.restore();
     });
 
     it('requisição deve ser bem sucedida status 200', async () => {
@@ -36,13 +35,13 @@ describe('Sales Controller', () => {
       };
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
-      sinon.stub(salesService, 'findSalesId').resolves([
+      sinon.stub(salesService.findSalesId, 'findSalesId').resolves([
         []
       ]);
     });
 
     afterEach(() => {
-      salesService.findSalesId.restore();
+      salesService.findSalesId.findSalesId.restore();
     });
 
     it('testa se a requisição foi bem sucedida status 200', async () => {

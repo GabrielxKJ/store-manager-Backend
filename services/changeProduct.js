@@ -1,6 +1,6 @@
-const updateProducts = require('../models/updateProducts');
+const models = require('../models/updateProducts');
 
-module.exports = async (id, name, quantity) => {
- const changeProduct = await updateProducts(id, name, quantity);
+module.exports.changeProduct = async (id, name, quantity) => {
+ const changeProduct = await models.updateProducts(id, name, quantity);
  return changeProduct;
 };

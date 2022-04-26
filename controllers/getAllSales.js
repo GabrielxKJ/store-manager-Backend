@@ -1,6 +1,6 @@
-const AllSales = require('../services/AllSales');
+const service = require('../services/AllSales');
 
 module.exports = async (_req, res) => {
-  const allSales = await AllSales();
+  const allSales = await service.AllSales();
   return res.status(200).json(allSales); 
 };

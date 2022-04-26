@@ -1,6 +1,6 @@
-const SearchAllSales = require('../models/searchAllSales');
+const models = require('../models/searchAllSales');
 
-module.exports = async () => {
-  const allSales = await SearchAllSales();
+module.exports.AllSales = async () => {
+  const allSales = await models.searchAllSales();
   return allSales;
 };

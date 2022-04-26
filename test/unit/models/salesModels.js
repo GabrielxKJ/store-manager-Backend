@@ -24,7 +24,7 @@ describe('ProductModel', () => {
     });
 
     it('testa se é retornado um array', async () => {
-      const response = await productsModel.searchAllSales();
+      const response = await productsModel.searchAllProducts.searchAllProducts();
       expect(response).to.be.a('array');
     });
   });
@@ -47,7 +47,7 @@ describe('ProductModel', () => {
     });
 
     it('testa se possui "name" como propriedade', async () => {
-      const response = await productsModel.searchSalesById(1);
+      const response = await productsModel.searchSalesById.searchSalesById(1);
       expect(response).to.be.a('array');
     });
   });
@@ -72,7 +72,7 @@ describe('ProductModel', () => {
           quantity: 1
         };
 
-        await productsModel.salesProducts(id, productId, quantity);
+        await productsModel.salesProducts.salesProduct(id, productId, quantity);
         expect(connection.execute.calledOnce).to.be.true;
       });
     });

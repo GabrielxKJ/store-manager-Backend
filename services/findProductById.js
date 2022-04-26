@@ -1,6 +1,6 @@
-const findProductByid = require('../models/searchProductById');
+const models = require('../models/searchProductById');
 
-module.exports = async (id) => {
-    const foundProductId = await findProductByid(id);
+module.exports.findProductsById = async (id) => {
+    const foundProductId = await models.searchProductById(id);
     return foundProductId;
 };

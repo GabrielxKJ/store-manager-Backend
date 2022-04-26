@@ -1,6 +1,6 @@
 const connection = require('./connection');
 
-module.exports = async (id) => {
+module.exports.searchProductById = async (id) => {
   const [productsDataById] = await connection.execute(
   'SELECT id, name, quantity FROM StoreManager.products WHERE id=?', [id],
   );

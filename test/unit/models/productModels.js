@@ -1,13 +1,12 @@
 const sinon = require('sinon');
-const {
-  expect
-} = require('chai');
+const { expect } = require('chai');
 const connection = require('../../../models/connection');
 
 const productsModel = require('../../../models/index');
 
 describe('ProductModel', () => {
   describe('testa a função geg', () => {
+
     const getAllProducts = [{
         "id": 1,
         "name": "product A",
@@ -30,7 +29,7 @@ describe('ProductModel', () => {
     });
 
     it('testa se é retornado um array', async () => {
-      const response = await productsModel.searchAllProducts();
+      const response = await productsModel.searchAllProducts.searchAllProducts();
       expect(response).to.be.a('array');
     });
   });
@@ -52,7 +51,7 @@ describe('ProductModel', () => {
     });
 
     it('testa se possui "name" como propriedade', async () => {
-      const response = await productsModel.searchProductById(1);
+      const response = await productsModel.searchProductById.searchProductById(1);
       expect(response).to.have.a.property('name');
     });
   });
@@ -73,7 +72,7 @@ describe('ProductModel', () => {
     });
 
     it('verifica se é adicionada a informação correta', async () => {
-      const response = await productsModel.insertProduct(create);
+      const response = await productsModel.insertProduct.insertProduct(create);
       expect(response).to.be.have.a.property('id');
     });
   });

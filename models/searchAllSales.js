@@ -1,6 +1,6 @@
 const connection = require('./connection');
 
-module.exports = async () => {
+module.exports.searchAllSales = async () => {
     const [sales] = await connection
     .execute(`
     SELECT 
