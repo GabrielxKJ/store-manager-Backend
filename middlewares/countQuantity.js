@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
     const sale = await service.findProductsById(productId);
     // const count = allSales.some((s) => s.quantity < quantity);
     // console.log(count, 'find');
-    if (sale < quantity) {
+    if (sale.quantity < quantity) {
       return res.status(422).json({ message: 'Such amount is not permitted to sell' });
     }
     next();
