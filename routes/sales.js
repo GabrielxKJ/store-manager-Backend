@@ -7,12 +7,12 @@ const {
    } = require('../controllers/index');
  
  const { 
-    notFoundSalesId, validateSales,
+    notFoundSalesId, validateSales, countQuantity,
   } = require('../middlewares/index');
 
 router.get('/', getAllSales);
 router.get('/:id', notFoundSalesId, getSalesId);
-router.post('/', validateSales, postSale);
+router.post('/', validateSales, countQuantity, postSale);
 router.put('/:id', validateSales, putSale);
 router.delete('/:id', notFoundSalesId, deleteSale);
 
