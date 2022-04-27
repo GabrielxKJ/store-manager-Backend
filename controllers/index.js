@@ -7,8 +7,10 @@ const putProduct = require('./putProduct');
 const deleteProduct = require('./deleteProduct');
 const postSale = require('./postSale');
 const putSale = require('./putSale');
+const deleteSale = require('./deleteSales');
 
 module.exports = {
+    deleteSale,
     getAllProducts,
     getAllSales,
     getProductId,
